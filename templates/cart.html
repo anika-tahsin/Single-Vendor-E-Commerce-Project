@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-5xl mx-auto px-4 py-10">
+  <h1 class="text-3xl font-bold mb-6">My Cart</h1>
+
+  {% if cart_items %}
+  <form method="POST" action="{% url 'update_cart' %}">
+    {% csrf_token %}
+    <div class="space-y-4">
+      {% for item in cart_items %}
+      <div class="flex items-center justify-between border p-4 rounded">
+        <div>
+          <h2 class="text-lg font-semibold">{{ item.product.name }}</h2>
+          <p class="text-sm text-gray-600">{{ item.product.description }}</p>
+          <p class="text-sm mt-1">Price: ${{ item.product.price }}</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <input type="number" name="quantity_{{ item.id }}" value="{{ item.quantity }}" class="w-16 border rounded px-2 py-1" />
+          <form method="POST" action="{% url 'remove_from_cart' item.id %}">
+            {% csrf_token %}
+            <button type="submit" class="text-red-600 text-sm hover:underline">Remove</button>
+          </form>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="mt-6 flex justify-between items-center">
+      <p class="text-lg font-semibold">Total: ${{ cart_total }}</p>
+      <div class="space-x-2">
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Update Cart</button>
+        <a href="{% url 'place_order' %}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Checkout</a>
+      </div>
+    </div>
+  </form>
+  {% else %}
+  <p>Your cart is empty.</p>
+  {% endif %}
+</div>
+{% endblock %}

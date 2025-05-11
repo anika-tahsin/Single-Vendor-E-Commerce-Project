@@ -1,0 +1,559 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fastkart">
+    <meta name="keywords" content="Fastkart">
+    <meta name="author" content="Fastkart">
+    <link rel="icon" href="{% static 'images/favicon.png'%}" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+
+    <title>{% block title %}Base{% endblock title %}</title>
+</head>
+
+<body class="theme-color-3 dark">
+    <!-- Header Start -->
+    <header class="header-3">
+        <div class="top-nav sticky-header sticky-header-2">
+            <div class="container-fluid-lg">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="navbar-top">
+                            <button class="navbar-toggler d-xl-none d-block p-0 me-3" type="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#primaryMenu">
+                                <span class="navbar-toggler-icon">
+                                    <i class="iconly-Category icli"></i>
+                                </span>
+                            </button>
+                            <!-- TODO: Add Home Page Link -->
+                            <a href="#" class="web-logo nav-logo">
+                                <img src="{% static 'images/logo.png' %}" class="img-fluid lazyload" alt="">
+                            </a>
+
+                            <div class="middle-box">
+                                <div class="center-box">
+                                    <div class="location-box-2">
+                                        <button class="btn location-button" data-bs-toggle="modal"
+                                            data-bs-target="#locationModal">
+                                            <i class="iconly-Location icli"></i>
+                                            <span>Location</span>
+                                            <i class="fa-solid fa-angle-down down-arrow"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="searchbar-box-2 input-group d-xl-flex d-none">
+                                        <button class="btn search-icon" type="button">
+                                            <i class="iconly-Search icli"></i>
+                                        </button>
+                                        <input type="text" class="form-control"
+                                            placeholder="Search for products, categories...">
+                                        <button class="btn search-button" type="button">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rightside-menu support-sidemenu">
+                                <div class="support-box">
+                                    <div class="support-image">
+                                        <img src="{% static 'images/support.png' %}" class="img-fluid lazyload" alt="">
+                                    </div>
+                                    <div class="support-number">
+                                        <h2>(123) 456 7890</h2>
+                                        <h4>24/7 Support Center</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid-lg">
+            <div class="row">
+                <div class="col-12 position-relative">
+                    <div class="main-nav nav-left-align">
+                        <div class="main-nav navbar navbar-expand-xl navbar-light navbar-sticky p-0">
+                            <div class="offcanvas offcanvas-collapse order-xl-2" id="primaryMenu">
+                                <div class="offcanvas-header navbar-shadow">
+                                    <h5>Menu</h5>
+                                    <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas"></button>
+                                </div>
+                                <div class="offcanvas-body">
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item dropdown dropdown-mega">
+                                            <!-- TODO: Add Home Page Link -->
+                                            <a class="nav-link ps-0" href="#">Home</a>
+                                        </li>
+
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#"
+                                                data-bs-toggle="dropdown">Shop</a>
+
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Shop
+                                                        Category Slider</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Shop
+                                                        Category Sidebar</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Shop Banner</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Shop Left
+                                                        Sidebar</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Shop List</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Shop
+                                                        Right Sidebar</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Shop Top
+                                                        Filter</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#"
+                                                data-bs-toggle="dropdown">Product</a>
+                                        </li>
+
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#"
+                                                data-bs-toggle="dropdown">Blog</a>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Blog Detail</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Blog Grid</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Blog List</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                        <li class="nav-item dropdown new-nav-item">
+                                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Pages
+                                                <label class="new-dropdown">New</label></a>
+                                            <ul class="dropdown-menu">
+                                                <li class="sub-dropdown-hover">
+                                                    <a class="dropdown-item" href="#">Email
+                                                        Template <span class="new-text"><i
+                                                                class="fa-solid fa-bolt-lightning"></i></span></a>
+                                                    <ul class="sub-menu">
+                                                        <li>
+                                                            <a href="#">Offer
+                                                                Template</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Order
+                                                                Success</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Reset
+                                                                Password</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Welcome
+                                                                template</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="sub-dropdown-hover">
+                                                    <a class="dropdown-item" href="#">Invoice
+                                                        Template <span class="new-text"><i
+                                                                class="fa-solid fa-bolt-lightning"></i></span></a>
+                                                    <ul class="sub-menu">
+                                                        <li>
+                                                            <a href="#">Invoice 1</a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="#">Invoice 2</a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="#">Invoice 3</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">404</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">About Us</a>
+                                                </li>
+                                                <li>
+                                                    <!-- TODO: Add Cart Detail Page Link -->
+                                                    <a class="dropdown-item" href="#">Cart</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Contact</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Checkout</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Coming Soon</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Compare</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Faq</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Order
+                                                        Success</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Order
+                                                        Tracking</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">OTP</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Search</a>
+                                                </li>
+                                                <li>
+                                                    <!-- TODO: Add User Dashboard Page Link -->
+                                                    <a class="dropdown-item" href="#">User Dashboard</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Wishlist</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#"
+                                                data-bs-toggle="dropdown">Seller</a>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Become a
+                                                        Seller</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Seller
+                                                        Dashboard</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Seller Detail</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Seller Detail
+                                                        2</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Seller Grid</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Seller Grid 2</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rightside-menu">
+                            <ul class="option-list-2">
+                                <li>
+                                    <a href="#" class="header-icon search-box search-icon">
+                                        <i class="fas fa-search"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="header-icon">
+                                        <small class="badge-number badge-light">2</small>
+
+                                        <i class="fas fa-exchange-alt"></i>
+                                    </a>
+                                </li>
+
+                                <li class="onhover-dropdown">
+                                    <a href="#" class="header-icon swap-icon">
+                                        <i class="fas fa-heart"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <!-- Add Cart Detail Page Link -->
+                                    <a href="#" class="header-icon bag-icon">
+                                        <small class="badge-number badge-light">{{cart_count}}</small>
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            {% if request.user.is_authenticated %}
+                            <!-- TODO: Add User Dashboard Page Link -->
+                            <a href="#" class="user-box">
+                                <span class="header-icon">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                            </a>
+                            {% else %}
+                            <!-- TODO: Add Login Page Link -->
+                            <a href="#" class="user-box">
+                                <span class="header-icon">
+                                    <i class="fas fa-user"></i>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- mobile fix menu start -->
+    <div class="mobile-menu d-md-none d-block mobile-cart">
+        <ul>
+            <li class="active">
+                <a href="#">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+
+            <li class="mobile-category">
+                <a href="#">
+                    <i class="fas fa-list"></i>
+                    <span>Category</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="search-box">
+                    <i class="iconly-Search icli"></i>
+                    <span>Search</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="notifi-wishlist">
+                    <i class="fas fa-heart"></i>
+                    <span>My Wish</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="iconly-Bag-2 icli fly-cate"></i>
+                    <span>Cart</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- mobile fix menu end -->
+
+    <!-- Messages Start -->
+    {% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <!-- Messages End -->
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer Start -->
+    <footer class="section-t-space footer-section-2 footer-color-2">
+        <div class="container-fluid-lg">
+            <div class="main-footer">
+                <div class="row g-md-4 gy-sm-5">
+                    <div class="col-xxl-3 col-xl-4 col-sm-6">
+                        <a href="#" class="foot-logo theme-logo">
+                            <img src="{% static 'images/logo.png' %}" class="img-fluid lazyload" alt="">
+                        </a>
+                        <p class="information-text information-text-2">It is a long established fact that a reader will
+                            be distracted by the readable content.</p>
+                        <ul class="social-icon">
+                            <li class="light-bg">
+                                <a href="https://www.facebook.com/" class="footer-link-color">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li class="light-bg">
+                                <a href="https://accounts.google.com/" class="footer-link-color">
+                                    <i class="fab fa-google"></i>
+                                </a>
+                            </li>
+                            <li class="light-bg">
+                                <a href="https://twitter.com/i/flow/login" class="footer-link-color">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="light-bg">
+                                <a href="https://www.instagram.com/" class="footer-link-color">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li class="light-bg">
+                                <a href="https://in.pinterest.com/" class="footer-link-color">
+                                    <i class="fab fa-pinterest-p"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xxl-2 col-xl-4 col-sm-6">
+                        <div class="footer-title">
+                            <h4 class="text-white">About Fastkart</h4>
+                        </div>
+                        <ul class="footer-list footer-contact footer-list-light">
+                            <li>
+                                <a href="#" class="light-text">About Us</a>
+                            </li>
+                            <li>
+                                <a href="#" class="light-text">Contact Us</a>
+                            </li>
+                            <li>
+                                <a href="#" class="light-text">Terms & Conditions</a>
+                            </li>
+                            <li>
+                                <a href="#" class="light-text">Careers</a>
+                            </li>
+                            <li>
+                                <a href="#" class="light-text">Latest Blog</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xxl-2 col-xl-4 col-sm-6">
+                        <div class="footer-title">
+                            <h4 class="text-white">Useful Link</h4>
+                        </div>
+                        <ul class="footer-list footer-list-light footer-contact">
+                            <li>
+                                <a href="#" class="light-text">Your Order</a>
+                            </li>
+                            <li>
+                                <a href="#" class="light-text">Your Account</a>
+                            </li>
+                            <li>
+                                <a href="#" class="light-text">Track Orders</a>
+                            </li>
+                            <li>
+                                <a href="#" class="light-text">Your Wishlist</a>
+                            </li>
+                            <li>
+                                <a href="#" class="light-text">FAQs</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xxl-2 col-xl-4 col-sm-6">
+                        <div class="footer-title">
+                            <h4 class="text-white">Categories</h4>
+                        </div>
+                        <ul class="footer-list footer-list-light footer-contact">
+                            <li>
+                                <a href="#" class="light-text">Fresh Vegetables</a>
+                            </li>
+                            <li>
+                                <a href="#" class="light-text">Hot Spice</a>
+                            </li>
+                            <li>
+                                <a href="#" class="light-text">Brand New Bags</a>
+                            </li>
+                            <li>
+                                <a href="#" class="light-text">New Bakery</a>
+                            </li>
+                            <li>
+                                <a href="#" class="light-text">New Grocery</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xxl-3 col-xl-4 col-sm-6">
+                        <div class="footer-title">
+                            <h4 class="text-white">Store information</h4>
+                        </div>
+                        <ul class="footer-address footer-contact">
+                            <li>
+                                <a href="#" class="light-text">
+                                    <div class="inform-box flex-start-box">
+                                        <i data-feather="map-pin"></i>
+                                        <p>Fastkart Demo Store</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="light-text">
+                                    <div class="inform-box">
+                                        <i data-feather="phone"></i>
+                                        <p>Call us: 123-456-7890</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="light-text">
+                                    <div class="inform-box">
+                                        <i data-feather="mail"></i>
+                                        <p>Email Us: support@fastkart.com</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="light-text">
+                                    <div class="inform-box">
+                                        <i data-feather="printer"></i>
+                                        <p>Fax: 123456</p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sub-footer sub-footer-lite section-b-space section-t-space">
+                <span class="left-footer">
+                    <p class="light-text">2025 Copyright</p>
+                </span>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- script js -->
+    <script src="{% static 'js/script.js' %}"></script>
+
+</body>
+
+</html>

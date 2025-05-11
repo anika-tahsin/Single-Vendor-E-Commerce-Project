@@ -1,0 +1,64 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}ShopHere{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-white">
+
+  <!-- Navbar -->
+  <nav class="bg-white dark:bg-gray-800 shadow p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold text-blue-600 dark:text-blue-400">ShopHere</a>
+      <div class="space-x-4">
+        <a href="#" class="hover:underline">Home</a>
+        <a href="#" class="hover:underline">Wishlist</a> 
+        
+        
+        <a href="" class="hover:underline">Cart</a> 
+         
+        <a href="{% url 'signup' %}" class="hover:underline">Login/Register</a>
+         
+
+        <button onclick="toggleTheme()" class="ml-2 px-2 py-1 border rounded">🌙</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <main class="py-6">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-6">
+    <div class="max-w-6xl mx-auto flex justify-between">
+      <div>
+        <h4 class="font-bold">Contact</h4>
+        <p>Email: support@shophere.com</p>
+      </div>
+      <div>
+        <h4 class="font-bold">Follow Us</h4>
+        <p>Facebook | Twitter | Instagram</p>
+      </div>
+      <div>
+        <h4 class="font-bold">Legal</h4>
+        <p>Terms | Privacy</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.dataset.theme = html.dataset.theme === "light" ? "dark" : "light";
+    }
+  </script>
+</body>
+</html>

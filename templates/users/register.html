@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Registration{% endblock %}
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-gray-200">
+  <div class="bg-white p-6 rounded shadow-md w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-6 text-center text-blue-600">Create an Account</h2>
+    <form method="POST">
+      {% csrf_token %}
+    
+      
+      <!--Error message-->
+
+      {% if form.errors %}
+        <div class="text-red-500 text-sm">
+          <ul>
+            {% for field in form %}
+              {% for error in field.errors %}
+              <li>{{ error }}</li>
+              {% endfor %}
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
+
+       <!--Input fields-->
+
+      <input type="text" name="username" placeholder="Username" required class="w-full p-2 border rounded mb-4 text-black" />
+      <input type="text" name="fullname" placeholder="Fullname" required class="w-full p-2 border rounded mb-4 text-black" />
+      <input type="email" name="email" placeholder="Email" required class="w-full p-2 border rounded mb-4 text-black" />
+      <input type="password" name="password1" placeholder="Password" required class="w-full p-2 border rounded mb-4 text-black" />
+      <input type="password" name="password2" placeholder="Confirm Password" required class="w-full p-2 border rounded mb-4 text-black" />
+
+      <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Register</button>
+    </form>
+
+    <div class="text-center my-4 text-sm text-black">or</div>
+
+    <button class="w-full border border-gray-300 p-2 rounded mb-2 flex items-center justify-center gap-2 hover:bg-gray-100 text-green-500">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google" class="h-5 w-5" />
+      Register with Google
+    </button>
+
+    <p class="text-center mt-4 text-sm text-gray-600">
+      Already have an account?
+      <a href="{% url 'login' %}" class="text-blue-600 hover:underline">Login</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

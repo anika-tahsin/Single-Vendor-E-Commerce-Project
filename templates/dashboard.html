@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-5xl mx-auto px-4 py-10">
+  <h1 class="text-3xl font-bold mb-8">My Dashboard</h1>
+
+  <!-- Profile Info -->
+  <div class="bg-white rounded shadow p-6 mb-8">
+    <h2 class="text-xl font-semibold mb-4">Profile Information</h2>
+    <form method="POST" class="grid gap-4 md:grid-cols-2">
+      {% csrf_token %}
+      <div>
+        <label class="block text-sm font-medium mb-1">Name</label>
+        <input type="text" name="name" value="{{ user.get_full_name }}" class="w-full border rounded p-2" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium mb-1">Email</label>
+        <input type="email" name="email" value="{{ user.email }}" class="w-full border rounded p-2" />
+      </div>
+      <div class="md:col-span-2 text-right">
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+          Update Profile
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Purchase History -->
+  <div class="bg-white rounded shadow p-6 mb-8">
+    <h2 class="text-xl font-semibold mb-4">Purchase History</h2>
+    {% if orders %}
+    <div class="overflow-x-auto">
+      <table class="w-full table-auto text-left">
+        <thead class="bg-gray-100 text-sm text-gray-700">
+          <tr>
+            <th class="px-4 py-2">Order ID</th>
+            <th class="px-4 py-2">Date</th>
+            <th class="px-4 py-2">Total</th>
+            <th class="px-4 py-2">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for order in orders %}
+          <tr class="border-t text-sm">
+            <td class="px-4 py-2">#{{ order.id }}</td>
+            <td class="px-4 py-2">{{ order.date|date:"Y-m-d" }}</td>
+            <td class="px-4 py-2">${{ order.total }}</td>
+            <td class="px-4 py-2 text-green-600">{{ order.status }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+      <p class="text-sm text-gray-600">You have no orders yet.</p>
+    {% endif %}
+  </div>
+
+  <!-- Product Reviews -->
+  <div class="bg-white rounded shadow p-6">
+    <h2 class="text-xl font-semibold mb-4">My Product Reviews</h2>
+    {% if reviews %}
+    <div class="space-y-4">
+      {% for review in reviews %}
+      <div class="border rounded p-4">
+        <h3 class="font-semibold">{{ review.product.name }}</h3>
+        <p class="text-sm text-gray-600 mb-2">Rating:
+          {% for star in "12345"|slice:":review.rating" %}⭐{% endfor %}
+        </p>
+        <p class="text-sm mb-2">{{ review.text }}</p>
+        <form method="POST" action="{% url 'delete_review' review.id %}">
+          {% csrf_token %}
+          <button type="submit" class="text-sm text-red-600 hover:underline">Delete Review</button>
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+      <p class="text-sm text-gray-600">You have not reviewed any products yet.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
