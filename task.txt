@@ -1,0 +1,101 @@
+Assignment: Single Vendor E-Commerce Project (Practice & Test Week)
+📌 Assignment Overview`
+In this assignment, you are required to develop a Single Vendor E-Commerce Web Application that allows users to browse products, register/login, add items to the cart, and complete purchases using the SSLCommerz payment gateway.
+
+You are expected to complete the full project independently and write code on your own, while also having the freedom to enhance it with new features and improvements. Upon completion, this project should be polished enough to add to your portfolio/CV.
+
+
+
+🔧 Core Requirements:
+✅ Home Page
+Fully functional Navbar with links to Home, Cart, and Login/Register
+
+
+A Carousel section to display promotional banners or featured products
+
+
+Product Card Section showing:
+
+
+Product Name & Short Description
+
+
+Old and New Price Tags
+
+
+“New Arrival” Badge 
+
+
+Link to Detailed Product Page
+
+
+Footer with:
+
+
+Contact Information
+
+
+Social Media Links
+
+
+Terms & Conditions / Privacy Policy
+
+
+✅ Authentication System
+Registration and Login using Email & Password
+
+
+Social login via Google (OAuth) ( optional)
+
+
+Email Verification required for account activation
+
+
+
+
+
+
+✅ User Dashboard
+View & Update Profile Information
+
+
+View Purchase History
+
+
+View and Manage Own Product Reviews
+
+
+✅ Add Card and Order
+Add to card 
+
+Update card
+
+Place to order
+
+After successfully ordering, update stock.
+
+✅ Payment Integration
+Integrate SSLCommerz for processing payments
+
+
+Proper handling of success and failure responses
+
+
+🌟 Optional Enhancements (Bonus)
+Add a wishlist or favorite system
+
+
+Implement product filtering or search functionality
+
+
+Add order invoice downloads or email confirmations
+
+
+📦 Submission Guidelines:
+Submit your GitHub repository link or project ZIP file
+
+
+Provide a short demo video (2–5 minutes) explaining key features (optional) 
+
+
+Deadline: 18th May 2025, 11:59 PM
