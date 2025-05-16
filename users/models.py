@@ -25,4 +25,9 @@ class customerUser(AbstractUser):
     objects = CustomerUserManager()
 
 
+    @property
+    def fullname(self):
+        return f"{self.first_name} {self.last_name}".strip()
+
+
     

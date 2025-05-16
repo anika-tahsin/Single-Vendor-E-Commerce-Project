@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% if email_type == "verification" %}Email Verification{% else %}Password Reset{% endif %}</title>
+</head>
+<body style="margin:0; padding:20px; background-color:#f3f4f6; font-family:Arial, sans-serif; color:#1f2937;">
+  <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px; margin:auto; background-color:#ffffff; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1); overflow:hidden;">
+    <tr>
+      <td style="background-color:#1f2937; color:#ffffff; padding:20px;">
+        <h1 style="margin:0; font-size:24px;">ShopHere</h1>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img src="https://via.placeholder.com/600x200?text=ShopHere" alt="ShopHere Banner" style="width:100%; display:block;" />
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:20px;">
+        <h2 style="font-size:20px; margin-bottom:10px;">
+          {% if email_type == "verification" %}
+            Hi {{ user.first_name }}, thanks for joining ShopHere!
+          {% else %}
+            Hi {{ user.first_name }}, you requested a password reset.
+          {% endif %}
+        </h2>
+        <p style="font-size:16px; line-height:1.5; margin-bottom:20px;">
+          {% if email_type == "verification" %}
+            Please confirm your email by clicking the button below to activate your account.
+          {% else %}
+            Click the button below to reset your password.
+          {% endif %}
+        </p>
+
+        <p style="text-align:center;">
+          <a href="{{ verification_link }}" style="display:inline-block; background-color:#059669; color:#ffffff; padding:12px 24px; border-radius:6px; text-decoration:none; font-size:16px;">
+            {% if email_type == "verification" %}
+              Verify Email
+            {% else %}
+              Reset Password
+            {% endif %}
+          </a>
+        </p>
+
+        <p style="font-size:14px; color:#6b7280; margin-top:20px;">
+          {% if email_type == "verification" %}
+            If you did not create an account, you can safely ignore this email.
+          {% else %}
+            If you did not request a password reset, please ignore this email.
+          {% endif %}
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="background-color:#1f2937; color:#d1d5db; text-align:center; padding:16px; font-size:14px;">
+        <p style="margin:4px 0;">Contact us: 
+          <a href="mailto:ShopHere@example.com" style="color:#ffffff; text-decoration:underline;">ShopHere@example.com</a>
+        </p>
+        <p style="margin:4px 0;">© {{ now.year }} ShopHere. All rights reserved.</p>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

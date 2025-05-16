@@ -1,20 +1,67 @@
 {% extends "base.html" %}
+
+{% load static %}
+
+
 {% block content %}
+
 <div class="max-w-5xl mx-auto px-4 py-10">
   <h1 class="text-3xl font-bold mb-8">My Dashboard</h1>
 
   <!-- Profile Info -->
   <div class="bg-white rounded shadow p-6 mb-8">
-    <h2 class="text-xl font-semibold mb-4">Profile Information</h2>
+    <h2 class="text-xl font-semibold mb-4 text-emerald-700">Account Information</h2>
+    <div class="w-full max-w-4xl mx-auto rounded-lg overflow-hidden shadow-lg">
+      <!-- Cover Image -->
+      <div class="h-48 w-full">
+        <img src="{% static 'assets/images/inner-page/cover-img.jpg'%}" alt=""
+            class="w-full h-full object-cover" />
+      </div>
+
+      <!-- Profile Container -->
+      <div class="flex flex-col sm:flex-row items-center sm:items-end gap-4 px-6 py-4 bg-white relative -mt-12 sm:-mt-16">
+        
+        <!-- Profile Image Section -->
+        <div class="relative">
+          <img src="{% static 'assets/images/inner-page/user/1.jpg'%}" alt=""
+              class="w-32 h-32 object-cover rounded-full border-4 border-white shadow-md" />
+
+          <!-- Edit Icon -->
+          <label class="absolute bottom-0 right-0 bg-gray-800 text-white p-2 rounded-full cursor-pointer hover:bg-gray-700">
+            <i class="fas fa-pen text-sm"></i>
+            <input type="file" onchange="readURL(this, 0)" class="hidden" />
+          </label>
+        </div>
+
+        <!-- User Info -->
+        <div class="text-center sm:text-left">
+          <h3 class="text-2xl font-semibold text-slate-800">{{ user_info.fullname }}</h3>
+          <p class="text-slate-500">{{ user_info.email }}</p>
+          <p class="text-slate-500">{{ user_info.mobile }}</p>
+          <p class="text-slate-500">{{ user_info.address }}</p>
+          <p class="text-slate-500">{{ user_info.city }}</p>
+          <p class="text-slate-500">{{ user_info.country }}</p>
+        </div>
+      </div>
+</div>
+
     <form method="POST" class="grid gap-4 md:grid-cols-2">
       {% csrf_token %}
       <div>
-        <label class="block text-sm font-medium mb-1">Name</label>
-        <input type="text" name="name" value="{{ user.get_full_name }}" class="w-full border rounded p-2" />
+        <label class="block text-sm font-medium mb-1 text-rose-500">Name</label>
+        <input type="text" name="name" value="{{ user.fullname }}" class="w-full border rounded p-2" />
       </div>
       <div>
-        <label class="block text-sm font-medium mb-1">Email</label>
+        <label class="block text-sm font-medium mb-1 text-rose-500">Email</label>
         <input type="email" name="email" value="{{ user.email }}" class="w-full border rounded p-2" />
+      </div>
+       <div>
+        <label class="block text-sm font-medium mb-1 text-rose-500">Mobile No</label>
+        <input type="text" name="mobile" value="{{ user.mobile }}" class="w-full border rounded p-2" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium mb-1 text-rose-500">Address</label>
+        <input type="text" name="address" value="{{ user.address }}" class="w-full border rounded p-2" />
       </div>
       <div class="md:col-span-2 text-right">
         <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
