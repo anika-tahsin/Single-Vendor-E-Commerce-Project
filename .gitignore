@@ -174,5 +174,3 @@ cython_debug/
 .pypirc
 
 # Media collection
-static/
-media/

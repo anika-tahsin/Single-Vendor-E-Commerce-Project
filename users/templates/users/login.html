@@ -24,10 +24,18 @@
         </div>
       {% endif %}
 
+      {% if messages %}
+        <div class="text-red-500 text-sm">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        <div>
+      {% endif %}
+
 
        <!--Input fields-->
 
-      <input type="test" name="username" placeholder="Email/Username" required class="w-full p-2 border rounded mb-4 text-black" />
+      <input type="test" name="email" placeholder="Email/Username" required class="w-full p-2 border rounded mb-4 text-black" />
       <input type="password" name="password" placeholder="Password" required class="w-full p-2 border rounded mb-4 text-black" />
       <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Login</button>
     </form>

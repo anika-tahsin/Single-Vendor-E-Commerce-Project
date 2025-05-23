@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
+    'products',
+    'cart',
+    'orders'
 ]
 
 MIDDLEWARE = [
@@ -136,6 +139,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Custom models
 AUTH_USER_MODEL = "users.customerUser"
 
+# Default, supports email login if USERNAME_FIELD=email
+AUTHENTICATION_BACKENDS = [
+    'users.backends.EmailBackend',  
+]
 
 # Email Configuration
 

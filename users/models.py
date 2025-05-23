@@ -19,7 +19,6 @@ class customerUser(AbstractUser):
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
-
     username = None
 
     objects = CustomerUserManager()

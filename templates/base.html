@@ -8,6 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% block title %}ShopHere{% endblock %}</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 </head>
 
 <body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-white">
@@ -15,15 +17,15 @@
   <!-- Navbar -->
   <nav class="bg-white dark:bg-gray-800 shadow p-4">
     <div class="container mx-auto flex justify-between items-center">
-      <a href="#" class="text-2xl font-bold text-blue-600 dark:text-blue-400">ShopHere</a>
+      <a href="{% url 'home' %}" class="text-2xl font-bold text-blue-600 dark:text-blue-400">ShopHere</a>
       <div class="space-x-4">
-        <a href="#" class="hover:underline">Home</a>
-        <a href="#" class="hover:underline">Wishlist</a> 
-        
-        
+        <a href="{% url 'home' %}" class="hover:underline">Home</a>
+        <a href="#" class="hover:underline">Category</a>
+        <a href="/users/wishlist.html" class="hover:underline">Wishlist</a> 
         <a href="" class="hover:underline">Cart</a> 
          
         <a href="{% url 'signup' %}" class="hover:underline">Login/Register</a>
+        <a href="{% url 'account' %}" class="hover:underline">Profile</a>
          
 
         <button onclick="toggleTheme()" class="ml-2 px-2 py-1 border rounded">🌙</button>
