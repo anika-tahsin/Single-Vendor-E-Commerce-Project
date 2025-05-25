@@ -88,6 +88,7 @@ def place_order(request):
         "total": total,
         "quantity": quantity,
         "cart_items": cart_products,
+        "delivery_charge" : settings.DELIVERY_CHARGE,
         "grand_total": total + settings.DELIVERY_CHARGE,
     }
 

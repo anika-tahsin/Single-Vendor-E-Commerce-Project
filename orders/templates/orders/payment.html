@@ -25,7 +25,7 @@
             <tr class="border-b border-gray-100 text-black">
               <td class="py-2">{{ cart_item.product.name }}</td>
               <td class="py-2 text-center">{{ cart_item.quantity }}</td>
-              <td class="py-2 text-right">Tk {{ cart_item.product_price }}</td>
+              <td class="py-2 text-right">Tk {{ cart_item.total }}</td>
             </tr>
             {% endfor %}
           </tbody>
