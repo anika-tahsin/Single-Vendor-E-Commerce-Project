@@ -4,9 +4,6 @@ from products.models import Product, TimeStampedModel
 
 # Create your models here.
 
-
-
-
 class Cart(TimeStampedModel):
     user = models.ForeignKey(
         customerUser(), null=True, related_name="carts", on_delete=models.CASCADE

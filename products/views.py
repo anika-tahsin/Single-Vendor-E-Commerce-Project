@@ -43,4 +43,4 @@ def product_detail(request, product_slug):
         "rating_percentages": 0,
         "reviews": 0,
     }
-    return render(request, "products/product-detail.html", context)
+    return render(request, "products/product_detail.html", context)

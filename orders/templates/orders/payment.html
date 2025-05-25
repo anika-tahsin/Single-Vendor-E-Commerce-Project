@@ -1,14 +1,65 @@
 {% extends "base.html" %}
-{% block content %}
-<div class="max-w-2xl mx-auto px-4 py-16 text-center">
-  <h1 class="text-2xl font-semibold mb-4">Proceed to Payment</h1>
-  <p class="text-gray-600 mb-6">Total amount to pay: <strong>${{ total_amount }}</strong></p>
+{% load static %}
 
-  <form method="POST" action="{% url 'initiate_payment' %}">
+{% block content %}
+<div class="max-w-3xl mx-auto p-6">
+  <h2 class="bg-amber-500 text-2xl font-bold mb-6 text-black">Checkout</h2>
+
+  <form method="POST" action="{% url 'place_order' %}" class="space-y-6">
     {% csrf_token %}
-    <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">
-      Pay with SSLCommerz
-    </button>
+
+    <!-- Order Summary -->
+    <div class="bg-white shadow-md rounded-lg p-6">
+      <h3 class="text-xl font-semibold mb-4 text-black">Order Summary</h3>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b border-gray-200 text-black">
+              <th class="pb-2">Product</th>
+              <th class="pb-2 text-center">Quantity</th>
+              <th class="pb-2 text-right">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cart_item in cart_items %}
+            <tr class="border-b border-gray-100 text-black">
+              <td class="py-2">{{ cart_item.product.name }}</td>
+              <td class="py-2 text-center">{{ cart_item.quantity }}</td>
+              <td class="py-2 text-right">Tk {{ cart_item.product_price }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-4 space-y-1 text-sm text-black">
+        <p><strong>Sub Total:</strong> Tk {{ total }}</p>
+        <p><strong>Delivery Charge:</strong> Tk {{ delivery_charge }}</p>
+        <p class="font-semibold text-lg"><strong>Total:</strong> Tk {{ grand_total }}</p>
+      </div>
+    </div>
+
+    <!-- Payment Method -->
+    <div class="bg-white shadow-md rounded-lg p-6 text-black">
+      <h4 class="text-lg font-medium mb-3">Select Payment Method</h4>
+      <div class="space-y-2">
+        <label class="flex items-center space-x-2">
+          <input type="radio" name="payment_method" value="sslcommerz" class="form-radio text-blue-600" required>
+          <span>Pay Online (SSLCommerz)</span>
+        </label>
+        <label class="flex items-center space-x-2">
+          <input type="radio" name="payment_method" value="cash" class="form-radio text-blue-600" required>
+          <span>Cash on Delivery</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="text-right">
+      <a href="{% url 'place_order' %}" type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg transition duration-200">
+        Place Order
+      </a>
+    </div>
   </form>
 </div>
 {% endblock %}

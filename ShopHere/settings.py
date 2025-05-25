@@ -12,10 +12,16 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 import os
 from pathlib import Path
+import environ
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# read .env
+env = environ.Env()
+# environ.Env.read_env() 
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -117,6 +123,9 @@ USE_I18N = True
 USE_TZ = True
 
 
+
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
@@ -144,6 +153,8 @@ AUTHENTICATION_BACKENDS = [
     'users.backends.EmailBackend',  
 ]
 
+
+
 # Email Configuration
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
@@ -151,11 +162,18 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 EMAIL_HOST_USER = "anikatahsintonu@gmail.com" #env("EMAIL_HOST_USER")
+# print("EMAIL_HOST_USER:", env("EMAIL_HOST_USER"))
 EMAIL_HOST_PASSWORD = "phaq ydoy udqe qaaj" #env("EMAIL_HOST_PASSWORD")
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
+DELIVERY_CHARGE = 70
 
 
+# SSL COMMERZ Configuration
+
+SSLCOMMERZ_IS_SANDBOX = True  #env("SSLCOMMERZ_IS_SANDBOX")
+SSLCOMMERZ_STORE_ID = "mysho683041d64cbda" #env("SSLCOMMERZ_STORE_ID")
+SSLCOMMERZ_STORE_PASS = "mysho683041d64cbda@ssl" #env("SSLCOMMERZ_STORE_PASS")
 
 

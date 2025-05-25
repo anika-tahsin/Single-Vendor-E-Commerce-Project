@@ -8,8 +8,8 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from sslcommerz_python_api import SSLCSession
 
-from carts.models import Cart, CartProduct
-from carts.utils import get_session_key
+from cart.models import Cart, CartProduct
+from cart.utils import get_session_key
 from products.models import Product
 
 from .models import Order, OrderProduct, Payment
@@ -33,17 +33,17 @@ def place_order(request):
     quantity = 0
     total = 0
     for cart_product in cart_products:
-        total += cart_product.product.price * cart_product.quantity
+        total += cart_product.product.regular_price * cart_product.quantity
         quantity += cart_product.quantity
 
     if request.method == "POST":
-        payment_option = request.POST.get("payment_method")  # cash / sslcommercez
+        payment_option = request.POST.get("payment_method")  # cash payment/ sslcommercez
 
         try:
             current_date = datetime.date.today()
             order_number = current_date.strftime("%Y%m%d%h%m%s") + str(
                 random.random()
-            )  # 202550510
+            )  
             current_user = request.user
 
             order = Order.objects.create(
@@ -65,7 +65,7 @@ def place_order(request):
                     order=order,
                     product=cart_item.product,
                     quantity=cart_item.quantity,
-                    product_price=cart_item.product.price,
+                    product_price=cart_item.product.regular_price,
                 )
 
                 product = Product.objects.get(id=cart_item.product.id)
@@ -91,7 +91,7 @@ def place_order(request):
         "grand_total": total + settings.DELIVERY_CHARGE,
     }
 
-    return render(request, "orders/checkout.html", context=context)
+    return render(request, "orders/payment.html", context=context)
 
 
 def payment(request):
@@ -180,7 +180,7 @@ def payment_status(request):
                 "order": order,
                 "transaction_id": tran_id,
             }
-            return render(request, "orders/order-success.html", context)
+            return render(request, "orders/order_success.html", context)
 
         else:
-            return render(request, "orders/payment-failed.html")
+            return render(request, "orders/payment_failed.html")

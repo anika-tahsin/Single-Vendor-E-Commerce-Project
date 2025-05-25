@@ -4,7 +4,7 @@
   <h1 class="text-3xl font-bold mb-6">My Cart</h1>
 
   {% if cart_items %}
-  <form method="POST" action="{% url 'update_cart' %}">
+  <form method="POST" action="#">
     {% csrf_token %}
     <div class="space-y-4">
       {% for item in cart_items %}
@@ -12,11 +12,12 @@
         <div>
           <h2 class="text-lg font-semibold">{{ item.product.name }}</h2>
           <p class="text-sm text-gray-600">{{ item.product.description }}</p>
-          <p class="text-sm mt-1">Price: ${{ item.product.price }}</p>
+          
+          <p class="text-sm mt-1">Price: ${{ item.product.regular_price }}</p>
         </div>
         <div class="flex items-center gap-2">
-          <input type="number" name="quantity_{{ item.id }}" value="{{ item.quantity }}" class="w-16 border rounded px-2 py-1" />
-          <form method="POST" action="{% url 'remove_from_cart' item.id %}">
+          <input type="number" name="quantity_{{ item.id }}" value="{{ item.quantity }}" class="w-16 border rounded px-2 py-1 text-black" />
+          <form method="POST" action="{% url 'cart:remove_cart' item.id %}">
             {% csrf_token %}
             <button type="submit" class="text-red-600 text-sm hover:underline">Remove</button>
           </form>
